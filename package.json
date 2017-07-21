@@ -1,0 +1,22 @@
+{
+  "name": "cryptowatch-api",
+  "version": "0.0.1",
+  "description": "Cryptowatch api wrapper",
+  "main": "index.js",
+  "scripts": {
+    "generate-docs": "node_modules/.bin/jsdoc2md index.js > README.md"
+  },
+  "author": "Wells Johnston",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wellsjo/cryptowatch-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wellsjo/cryptowatch-api/issues"
+  },
+  "homepage": "https://github.com/wellsjo/cryptowatch-api#readme",
+  "devDependencies": {
+    "jsdoc-to-markdown": "^3.0.0"
+  }
+}
