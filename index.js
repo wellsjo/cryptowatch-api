@@ -22,14 +22,20 @@ class CryptoWatch {
 
   request(endpoint) {
     return new Promise((resolve, reject) => {
+      const url = `${this.url}/${endpoint}`
       http
-        .get(`${this.url}/${endpoint}`)
+        .get(url)
         .end((err, res) => {
           if (err) {
-            reject('Request failed')
+            reject({
+              message: 'Request failed',
+              error: String(err),
+              url
+            })
+          } else {
+            resolve(res.body.result)
+            this.allowanceRemaining = res.body.allowance.remaining
           }
-          this.allowangeRemaining = res.body.allowance.remaining
-          resolve(res.body.result)
         })
     })
   }
@@ -39,7 +45,7 @@ class CryptoWatch {
    */
 
   allowance() {
-    return this.allowangeRemaining
+    return this.allowanceRemaining
   }
 
   /**
