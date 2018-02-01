@@ -11,8 +11,8 @@ class CryptoWatch {
    * @constructor
    */
 
-  constructor() {
-    this.url = 'https://api.cryptowat.ch'
+  constructor(url = 'https://api.cryptowat.ch') {
+    this.url = url
   }
 
   /**
