@@ -1,6 +1,6 @@
 {
   "name": "cryptowatch-api",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Cryptowatch api wrapper",
   "main": "index.js",
   "scripts": {
