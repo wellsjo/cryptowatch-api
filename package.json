@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/wellsjo/cryptowatch-api#readme",
   "devDependencies": {
-    "jsdoc-to-markdown": "^3.0.0"
+    "jsdoc-to-markdown": "^4.0.1"
   },
   "dependencies": {
-    "superagent": "^3.6.2"
+    "superagent": "^3.8.3"
   }
 }
