@@ -14,7 +14,7 @@ class CryptoWatch {
 
   constructor(url = "https://api.cryptowat.ch") {
     this.url = url;
-    this.allowance = CW_STARTING_ALLOWANCE;
+    this._allowance = CW_STARTING_ALLOWANCE;
   }
 
   /**
@@ -36,7 +36,7 @@ class CryptoWatch {
               url
             });
           } else {
-            this.allowance = res.body.allowance.remaining;
+            this._allowance = res.body.allowance.remaining;
             resolve(res.body.result);
           }
         });
@@ -48,7 +48,7 @@ class CryptoWatch {
    */
 
   allowance() {
-    return this.allowance;
+    return this._allowance;
   }
 
   /**
