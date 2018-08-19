@@ -1,4 +1,4 @@
-const http = require('superagent')
+const http = require("superagent");
 
 /**
  * @class CryptoWatch
@@ -6,13 +6,12 @@ const http = require('superagent')
  */
 
 class CryptoWatch {
-
   /**
    * @constructor
    */
 
-  constructor(url = 'https://api.cryptowat.ch') {
-    this.url = url
+  constructor(url = "https://api.cryptowat.ch") {
+    this.url = url;
   }
 
   /**
@@ -20,24 +19,25 @@ class CryptoWatch {
    * @private
    */
 
-  request(endpoint) {
+  request(endpoint, params) {
     return new Promise((resolve, reject) => {
-      const url = `${this.url}/${endpoint}`
+      const url = `${this.url}/${endpoint}`;
       http
         .get(url)
+        .query(params)
         .end((err, res) => {
           if (err) {
             reject({
-              message: 'Request failed',
+              message: "Request failed",
               error: String(err),
               url
-            })
+            });
           } else {
-            resolve(res.body.result)
-            this.allowanceRemaining = res.body.allowance.remaining
+            this.allowanceRemaining = res.body.allowance.remaining;
+            resolve(res.body.result);
           }
-        })
-    })
+        });
+    });
   }
 
   /**
@@ -45,7 +45,7 @@ class CryptoWatch {
    */
 
   allowance() {
-    return this.allowanceRemaining
+    return this.allowanceRemaining;
   }
 
   /**
@@ -53,7 +53,7 @@ class CryptoWatch {
    */
 
   assets() {
-    return this.request('assets')
+    return this.request("assets");
   }
 
   /**
@@ -63,7 +63,7 @@ class CryptoWatch {
    */
 
   asset(name) {
-    return this.request(`assets/${name}`)
+    return this.request(`assets/${name}`);
   }
 
   /**
@@ -71,7 +71,7 @@ class CryptoWatch {
    */
 
   pairs() {
-    return this.request('pairs')
+    return this.request("pairs");
   }
 
   /**
@@ -81,7 +81,7 @@ class CryptoWatch {
    */
 
   pair(name) {
-    return this.request(`pairs/${name}`)
+    return this.request(`pairs/${name}`);
   }
 
   /**
@@ -92,13 +92,15 @@ class CryptoWatch {
 
   exchanges(active = true) {
     return new Promise((resolve, reject) => {
-      this.request('exchanges').then((exchanges) => {
-        if (active) {
-          exchanges = exchanges.filter((e) => e.active)
-        }
-        resolve(exchanges)
-      }).catch(reject)
-    })
+      this.request("exchanges")
+        .then(exchanges => {
+          if (active) {
+            exchanges = exchanges.filter(e => e.active);
+          }
+          resolve(exchanges);
+        })
+        .catch(reject);
+    });
   }
 
   /**
@@ -108,7 +110,7 @@ class CryptoWatch {
    */
 
   exchange(name) {
-    return this.request(`exchanges/${name}`)
+    return this.request(`exchanges/${name}`);
   }
 
   /**
@@ -118,12 +120,12 @@ class CryptoWatch {
    * markets for
    */
 
-  markets(exchange = '') {
-    let endpoint = 'markets'
+  markets(exchange = "") {
+    let endpoint = "markets";
     if (exchange.length > 0) {
-      endpoint = `${endpoint}/${exchange}`
+      endpoint = `${endpoint}/${exchange}`;
     }
-    return this.request(endpoint)
+    return this.request(endpoint);
   }
 
   /**
@@ -134,7 +136,7 @@ class CryptoWatch {
    */
 
   market(exchange, pair) {
-    return this.request(`markets/${exchange}/${pair}`)
+    return this.request(`markets/${exchange}/${pair}`);
   }
 
   /**
@@ -145,7 +147,7 @@ class CryptoWatch {
    */
 
   price(market, pair) {
-    return this.request(`markets/${market}/${pair}/price`)
+    return this.request(`markets/${market}/${pair}/price`);
   }
 
   /**
@@ -155,7 +157,7 @@ class CryptoWatch {
    */
 
   prices() {
-    return this.request('markets/prices')
+    return this.request("markets/prices");
   }
 
   /**
@@ -166,7 +168,7 @@ class CryptoWatch {
    */
 
   summary(market, pair) {
-    return this.request(`markets/${market}/${pair}/summary`)
+    return this.request(`markets/${market}/${pair}/summary`);
   }
 
   /**
@@ -176,7 +178,7 @@ class CryptoWatch {
    */
 
   summaries() {
-    return this.request('markets/summaries')
+    return this.request("markets/summaries");
   }
 
   /**
@@ -184,10 +186,11 @@ class CryptoWatch {
    *
    * @param {String} market
    * @param {String} pair
+   * @param {Object} params
    */
 
-  trades(market, pair) {
-    return this.request(`markets/${market}/${pair}/trades`)
+  trades(market, pair, params) {
+    return this.request(`markets/${market}/${pair}/trades`, params);
   }
 
   /**
@@ -198,7 +201,7 @@ class CryptoWatch {
    */
 
   orderbook(market, pair) {
-    return this.request(`markets/${market}/${pair}/orderbook`)
+    return this.request(`markets/${market}/${pair}/orderbook`);
   }
 
   /**
@@ -207,11 +210,12 @@ class CryptoWatch {
    *
    * @param {String} market
    * @param {String} pair
+   * @param {Object} params
    */
 
-  OHLC(market, pair) {
-    return this.request(`markets/${market}/${pair}/ohlc`)
+  OHLC(market, pair, params) {
+    return this.request(`markets/${market}/${pair}/ohlc`, params);
   }
 }
 
-module.exports = CryptoWatch
+module.exports = CryptoWatch;
