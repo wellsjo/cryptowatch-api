@@ -1,5 +1,7 @@
 const http = require("superagent");
 
+const CW_STARTING_ALLOWANCE = 8000000000;
+
 /**
  * @class CryptoWatch
  * Wrapper for cryptowat.ch api
@@ -12,6 +14,7 @@ class CryptoWatch {
 
   constructor(url = "https://api.cryptowat.ch") {
     this.url = url;
+    this.allowance = CW_STARTING_ALLOWANCE;
   }
 
   /**
@@ -33,7 +36,7 @@ class CryptoWatch {
               url
             });
           } else {
-            this.allowanceRemaining = res.body.allowance.remaining;
+            this.allowance = res.body.allowance.remaining;
             resolve(res.body.result);
           }
         });
@@ -45,7 +48,7 @@ class CryptoWatch {
    */
 
   allowance() {
-    return this.allowanceRemaining;
+    return this.allowance;
   }
 
   /**
