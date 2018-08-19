@@ -4,7 +4,7 @@
   "description": "Cryptowatch api wrapper",
   "main": "cryptowatch.js",
   "scripts": {
-    "generate-docs": "node_modules/.bin/jsdoc2md index.js > README.md",
+    "generate-docs": "node_modules/.bin/jsdoc2md cryptowatch.js > README.md",
     "test": "jest"
   },
   "author": "Wells Johnston",
