@@ -189,7 +189,7 @@ class CryptoWatch {
    *
    * @param {String} market
    * @param {String} pair
-   * @param {Object} params
+   * @param {Object} [params]
    */
 
   trades(market, pair, params) {
@@ -213,7 +213,7 @@ class CryptoWatch {
    *
    * @param {String} market
    * @param {String} pair
-   * @param {Object} params
+   * @param {Object} [params]
    */
 
   OHLC(market, pair, params) {

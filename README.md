@@ -20,9 +20,9 @@ Wrapper for cryptowat.ch api
     * [.prices()](#CryptoWatch+prices)
     * [.summary(market, pair)](#CryptoWatch+summary)
     * [.summaries()](#CryptoWatch+summaries)
-    * [.trades(market, pair, params)](#CryptoWatch+trades)
+    * [.trades(market, pair, [params])](#CryptoWatch+trades)
     * [.orderbook(market, pair)](#CryptoWatch+orderbook)
-    * [.OHLC(market, pair, params)](#CryptoWatch+OHLC)
+    * [.OHLC(market, pair, [params])](#CryptoWatch+OHLC)
 
 <a name="CryptoWatch+allowance"></a>
 
@@ -151,7 +151,7 @@ cached.
 **Kind**: instance method of [<code>CryptoWatch</code>](#CryptoWatch)  
 <a name="CryptoWatch+trades"></a>
 
-### cryptoWatch.trades(market, pair, params)
+### cryptoWatch.trades(market, pair, [params])
 Returns trades for a given market and currency pair.
 
 **Kind**: instance method of [<code>CryptoWatch</code>](#CryptoWatch)  
@@ -160,7 +160,7 @@ Returns trades for a given market and currency pair.
 | --- | --- |
 | market | <code>String</code> | 
 | pair | <code>String</code> | 
-| params | <code>Object</code> | 
+| [params] | <code>Object</code> | 
 
 <a name="CryptoWatch+orderbook"></a>
 
@@ -176,7 +176,7 @@ Returns the orderbook for a given market and currency pair.
 
 <a name="CryptoWatch+OHLC"></a>
 
-### cryptoWatch.OHLC(market, pair, params)
+### cryptoWatch.OHLC(market, pair, [params])
 Returns a market’s OHLC candlestick data. Returns data as lists of lists
 of numbers for each time period integer.
 
@@ -186,5 +186,5 @@ of numbers for each time period integer.
 | --- | --- |
 | market | <code>String</code> | 
 | pair | <code>String</code> | 
-| params | <code>Object</code> | 
+| [params] | <code>Object</code> | 
 
